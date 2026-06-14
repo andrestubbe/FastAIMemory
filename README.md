@@ -1,4 +1,4 @@
-# FastAIMemory 0.1.0 [ALPHA] — Unified Conversation History and Memory Orchestration for Java
+# FastAIMemory 0.1.0 [ALPHA-2026-06] — Unified Conversation History and Memory Orchestration for Java
 
 [![Status](https://img.shields.io/badge/status-0.1.0-brightgreen.svg)](https://github.com/andrestubbe/FastAIMemory/releases/tag/0.1.0)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
