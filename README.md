@@ -88,6 +88,18 @@ Utility for trimming historical context prior to sending requests:
 
 ---
 
+## Related Projects
+
+- [FastAI](https://github.com/andrestubbe/FastAI) - Unified AI client interface for Java
+- [FastAIModel](https://github.com/andrestubbe/FastAIModel) - Native local inference runtime (GGUF/ONNX)
+- [FastCore](https://github.com/andrestubbe/FastCore) - Unified JNI loader and platform abstraction
+
+---
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+**Part of the FastJava Ecosystem** — *Making the JVM faster. Small package. Maximum speed. Zero bloat. 🚀📋*
