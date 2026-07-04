@@ -2,19 +2,19 @@ package fastaimemory;
 
 import java.util.List;
 
-public final class ChatMLFormatter implements MemoryFormatter {
+public final class PlainTextFormatter implements MemoryFormatter {
     @Override
     public String format(List<ConversationMessage> messages) {
         StringBuilder sb = new StringBuilder();
         for (ConversationMessage m : messages) {
             String roleName = switch (m.role()) {
-                case SYSTEM -> "system";
-                case USER -> "user";
-                case ASSISTANT -> "assistant";
+                case SYSTEM -> "System Instruction";
+                case USER -> "User";
+                case ASSISTANT -> "You";
             };
-            sb.append("<|im_start|>").append(roleName).append("\n")
-              .append(m.text()).append("<|im_end|>\n");
+            sb.append(roleName).append(": ").append(m.text()).append("\n\n");
         }
+        sb.append("You: ");
         return sb.toString();
     }
 }
