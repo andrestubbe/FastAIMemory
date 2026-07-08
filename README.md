@@ -1,6 +1,6 @@
-# FastAIMemory 0.1.0 [ALPHA-2026-06-14] — Unified Conversation History and Memory Orchestration for Java
+# FastAIMemory 0.1.2 — Unified Conversation History and Memory Orchestration for Java
 
-[![Status](https://img.shields.io/badge/status-0.1.0-brightgreen.svg)](https://github.com/andrestubbe/FastAIMemory/releases/tag/0.1.0)
+[![Status](https://img.shields.io/badge/status-0.1.2-brightgreen.svg)](https://github.com/andrestubbe/FastAIMemory/releases/tag/0.1.2)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Java](https://img.shields.io/badge/Java-17+-blue.svg)](https://www.java.com)
 [![JitPack](https://img.shields.io/badge/JitPack-ready-green.svg)](https://jitpack.io/#andrestubbe)
@@ -64,7 +64,7 @@ Add the JitPack repository and the dependency to your `pom.xml`:
     <dependency>
         <groupId>com.github.andrestubbe</groupId>
         <artifactId>FastAIMemory</artifactId>
-        <version>0.1.0</version>
+        <version>0.1.2</version>
     </dependency>
 </dependencies>
 ```
