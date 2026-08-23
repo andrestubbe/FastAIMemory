@@ -220,8 +220,8 @@ FastAIMemory is **zero-dependency** and **zero-allocation** for core orchestrati
 
 | Case | Java Example | Launcher | Description |
 |---|---|---|---|
-| **Memory Orchestration Demo** | [Demo.java](src/test/java/fastaimemory/Demo.java) | un-demo.bat | Interactive CLI demo showcasing Sliding Window, Rolling Summaries, and Semantic Memory. |
-| **JMH Microbenchmarks** | [FastAIMemoryBenchmark.java](examples/Benchmark/src/main/java/fastaimemory/FastAIMemoryBenchmark.java) | un-benchmark.bat | JMH throughput benchmark for ChatML/Gemini prompt formatting and memory trimming. |
+| **Memory Orchestration Demo** | [Demo.java](src/test/java/fastaimemory/Demo.java) | `run-demo.bat` | Interactive CLI demo showcasing Sliding Window, Rolling Summaries, and Semantic Memory. |
+| **JMH Microbenchmarks** | [FastAIMemoryBenchmark.java](examples/Benchmark/src/main/java/fastaimemory/FastAIMemoryBenchmark.java) | `run-benchmark.bat` | JMH throughput benchmark for ChatML/Gemini prompt formatting and memory trimming. |
 
 ---
 
@@ -229,11 +229,11 @@ FastAIMemory is **zero-dependency** and **zero-allocation** for core orchestrati
 
 | Method / Class | Return Type | Description |
 |----------------|-------------|-------------|
-| history.add(role, text) | oid | Appends a raw conversation message turn. |
-| history.messages() | List<ConversationMessage> | Returns a thread-safe read-only view of current turns. |
-| MemoryWindow.trimToMessages(list, n) | List<ConversationMessage> | Retains system prompt and latest $ messages. |
-| summaryMem.messages() | List<ConversationMessage> | Returns condensed summary combined with recent turns. |
-| semanticMem.recall(query) | List<MemoryEntry> | Recalls top matching knowledge snippets. |
+| `history.add(role, text)` | `void` | Appends a raw conversation message turn. |
+| `history.messages()` | `List<ConversationMessage>` | Returns a thread-safe read-only view of current turns. |
+| `MemoryWindow.trimToMessages(list, n)` | `List<ConversationMessage>` | Retains system prompt and latest N messages. |
+| `summaryMem.messages()` | `List<ConversationMessage>` | Returns condensed summary combined with recent turns. |
+| `semanticMem.recall(query)` | `List<MemoryEntry>` | Recalls top matching knowledge snippets. |
 
 ---
 
