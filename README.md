@@ -4,7 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Java](https://img.shields.io/badge/Java-17+-blue.svg)](https://www.java.com)
 [![Platform](https://img.shields.io/badge/Platform-Windows%2010+-lightgrey.svg)]()
-[![JitPack](https://img.shields.io/badge/JitPack-ready-green.svg)](https://jitpack.io/#andrestubbe)
+[![JitPack](https://img.shields.io/badge/JitPack-ready-green.svg)](https://jitpack.io/#andrestubbe/FastAIMemory)
 
 ---
 
@@ -22,12 +22,13 @@ FastAIMemory is a **primitive context manager** for Java. It unifies all 3 core 
 ## Quick Start
 
 `java
-package fastaimemory;
-
-import fastaimemory.*;
+import fastaimemory.ConversationHistory;
+import fastaimemory.MemoryWindow;
+import fastaimemory.SummaryMemory;
+import fastaimemory.SemanticMemory;
 import java.util.List;
 
-public class QuickStartDemo {
+public class Example {
     public static void main(String[] args) {
         // 1. Sliding Window & Conversation History
         ConversationHistory history = new ConversationHistory();
@@ -53,13 +54,14 @@ public class QuickStartDemo {
 ## Table of Contents
 
 - [Why FastAIMemory?](#why-fastaimemory)
+- [Quick Start](#quick-start)
 - [Key Features](#key-features)
-- [Installation](#installation)
-- [API Reference](#api-reference)
-- [Memory Patterns Supported](#memory-patterns-supported)
 - [Performance Benchmarks](#performance-benchmarks)
-- [Technical Examples & Demos](#technical-examples--demos)
 - [API Quick Reference](#api-quick-reference)
+- [Installation](#installation)
+- [Memory Patterns Supported](#memory-patterns-supported)
+- [API Reference](#api-reference)
+- [Technical Examples & Demos](#technical-examples--demos)
 - [Platform Support](#platform-support)
 - [License](#license)
 - [Related Projects](#related-projects)
@@ -86,7 +88,45 @@ FastAIMemory solves this by providing:
 - **🧠 Rolling Summary Memory** — Automatic condensation of older conversation turns while keeping recent context and system prompts active.
 - **🔍 Semantic Memory Recall** — Fast retrieval of user preferences and relevant knowledge snippets into active prompts.
 - **🎭 Unified Formatters** — Built-in polymorphic formatters for ChatML (<|im_start|>), Claude, Gemini, and plain text.
-- **⚡ Ultra-Lightweight** — Zero allocations on hot-paths with sub-microsecond formatting throughput.
+- **⚡ Ultra-Lightweight** — Zero allocations on hot-paths with sub-microsecond formatting throughput (> 16.4 Million ops/sec).
+
+---
+
+## Performance Benchmarks
+
+FastAIMemory is rigorously profiled using **JMH** to guarantee zero-overhead memory pruning and formatting:
+
+| Metric / Hot-Path Operation | Score (ops/ms) | Ops per Second |
+|-----------------------------|----------------|----------------|
+| **Sliding Window Trimming** | ~16,410 ops/ms | > 16.4 Million |
+| **Gemini Prompt Formatting** | ~657 ops/ms   | > 657,000 ops/sec |
+| **ChatML Prompt Formatting** | ~470 ops/ms   | > 470,000 ops/sec |
+
+*Measured on Windows 11, Intel Core i5-1135G7 (Surface Pro 8), JDK 21.0.12. Measures full message chain transformations and sliding array operations.*
+
+### Framework Comparison
+
+FastAIMemory is **zero-dependency** and **zero-allocation** for core orchestration:
+
+| Metric              | LangChain4j Memory | Spring AI Memory | FastAIMemory  |
+|---------------------|--------------------|------------------|---------------|
+| **Dependencies**    | 10+                | 15+              | **0**         |
+| **JAR Size**        | ~2MB               | ~4MB             | **~20KB**     |
+| **Startup Time**    | 1-2s               | 3-5s             | **<10ms**     |
+| **Memory Overhead** | High               | High             | **Minimal**   |
+| **Learning Curve**  | Hours              | Hours            | **2 minutes** |
+
+---
+
+## API Quick Reference
+
+| Method / Class | Return Type | Description |
+|----------------|-------------|-------------|
+| history.add(role, text) | oid | Appends a raw conversation message turn. |
+| history.messages() | List<ConversationMessage> | Returns a thread-safe read-only view of current turns. |
+| MemoryWindow.trimToMessages(list, n) | List<ConversationMessage> | Retains system prompt and latest N messages. |
+| summaryMem.messages() | List<ConversationMessage> | Returns condensed summary combined with recent turns. |
+| semanticMem.recall(query) | List<MemoryEntry> | Recalls top matching knowledge snippets. |
 
 ---
 
@@ -111,6 +151,16 @@ Add the JitPack repository and the dependency to your pom.xml:
 </dependency>
 </dependencies>
 `
+
+---
+
+## Memory Patterns Supported
+
+| Pattern Family | Mechanism | Primary Class | Best Use Case |
+|---|---|---|---|
+| **Window Memory** | Sliding message, character & token window | MemoryWindow | Real-time chat loops, short interactive sessions |
+| **Summary Memory** | Rolling LLM-assisted context condensation | SummaryMemory | Long-running agent execution, task chains |
+| **Semantic Memory** | Relevance & similarity-based recall | SemanticMemory | User preferences, long-term memory, knowledge facts |
 
 ---
 
@@ -180,60 +230,12 @@ var relevantMemories = userProfile.recall("Write a benchmark runner");
 
 ---
 
-## Memory Patterns Supported
-
-| Pattern Family | Mechanism | Primary Class | Best Use Case |
-|---|---|---|---|
-| **Window Memory** | Sliding message, character & token window | MemoryWindow | Real-time chat loops, short interactive sessions |
-| **Summary Memory** | Rolling LLM-assisted context condensation | SummaryMemory | Long-running agent execution, task chains |
-| **Semantic Memory** | Relevance & similarity-based recall | SemanticMemory | User preferences, long-term memory, knowledge facts |
-
----
-
-## Performance Benchmarks
-
-FastAIMemory is rigorously profiled using **JMH** to guarantee zero-overhead memory pruning and formatting:
-
-| Metric / Hot-Path Operation | Score (ops/ms) | Ops per Second |
-|-----------------------------|----------------|----------------|
-| **Sliding Window Trimming** | ~16,410 ops/ms | > 16.4 Million |
-| **Gemini Prompt Formatting** | ~657 ops/ms   | > 657,000 ops/sec |
-| **ChatML Prompt Formatting** | ~470 ops/ms   | > 470,000 ops/sec |
-
-*Measured on Windows 11, Intel Core i5-1135G7 (Surface Pro 8), JDK 21.0.12. Measures full message chain transformations and sliding array operations.*
-
-### Framework Comparison
-
-FastAIMemory is **zero-dependency** and **zero-allocation** for core orchestration:
-
-| Metric              | LangChain4j Memory | Spring AI Memory | FastAIMemory  |
-|---------------------|--------------------|------------------|---------------|
-| **Dependencies**    | 10+                | 15+              | **0**         |
-| **JAR Size**        | ~2MB               | ~4MB             | **~20KB**     |
-| **Startup Time**    | 1-2s               | 3-5s             | **<10ms**     |
-| **Memory Overhead** | High               | High             | **Minimal**   |
-| **Learning Curve**  | Hours              | Hours            | **2 minutes** |
-
----
-
 ## Technical Examples & Demos
 
 | Case | Java Example | Launcher | Description |
 |---|---|---|---|
-| **Memory Orchestration Demo** | [Demo.java](src/test/java/fastaimemory/Demo.java) | `run-demo.bat` | Interactive CLI demo showcasing Sliding Window, Rolling Summaries, and Semantic Memory. |
-| **JMH Microbenchmarks** | [FastAIMemoryBenchmark.java](examples/Benchmark/src/main/java/fastaimemory/FastAIMemoryBenchmark.java) | `run-benchmark.bat` | JMH throughput benchmark for ChatML/Gemini prompt formatting and memory trimming. |
-
----
-
-## API Quick Reference
-
-| Method / Class | Return Type | Description |
-|----------------|-------------|-------------|
-| `history.add(role, text)` | `void` | Appends a raw conversation message turn. |
-| `history.messages()` | `List<ConversationMessage>` | Returns a thread-safe read-only view of current turns. |
-| `MemoryWindow.trimToMessages(list, n)` | `List<ConversationMessage>` | Retains system prompt and latest N messages. |
-| `summaryMem.messages()` | `List<ConversationMessage>` | Returns condensed summary combined with recent turns. |
-| `semanticMem.recall(query)` | `List<MemoryEntry>` | Recalls top matching knowledge snippets. |
+| **Memory Orchestration Demo** | [Demo.java](src/test/java/fastaimemory/Demo.java) | un-demo.bat | Interactive CLI demo showcasing Sliding Window, Rolling Summaries, and Semantic Memory. |
+| **JMH Microbenchmarks** | [FastAIMemoryBenchmark.java](examples/Benchmark/src/main/java/fastaimemory/FastAIMemoryBenchmark.java) | un-benchmark.bat | JMH throughput benchmark for ChatML/Gemini prompt formatting and memory trimming. |
 
 ---
 
