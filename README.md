@@ -21,7 +21,7 @@ FastAIMemory is a **primitive context manager** for Java. It unifies all 3 core 
 
 ## Quick Start
 
-```java
+`java
 package fastaimemory;
 
 import fastaimemory.*;
@@ -46,7 +46,7 @@ public class QuickStartDemo {
         List<SemanticMemory.MemoryEntry> recalled = semanticMem.recall("Show me Java code");
     }
 }
-```
+`
 
 ---
 
