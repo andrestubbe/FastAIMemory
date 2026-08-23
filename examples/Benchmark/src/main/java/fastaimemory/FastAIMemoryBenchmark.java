@@ -47,4 +47,12 @@ public class FastAIMemoryBenchmark {
     public List<ConversationMessage> benchmarkWindowSlidingTrimming() {
         return MemoryWindow.trimToMessages(this.history.messages(), 10);
     }
+
+    @Benchmark
+    public List<SemanticMemory.MemoryEntry> benchmarkSemanticMemoryRecall() {
+        final SemanticMemory memory = new SemanticMemory(2, null);
+        memory.remember("k1", "User prefers Java 17+, zero-dependency libraries and strict performance.");
+        memory.remember("k2", "User enforces strict final and this keyword strategies.");
+        return memory.recall("Show me Java guidelines");
+    }
 }

@@ -99,10 +99,11 @@ FastAIMemory is rigorously profiled using **JMH** to guarantee zero-overhead mem
 | Metric / Hot-Path Operation | Score (ops/ms) | Ops per Second |
 |-----------------------------|----------------|----------------|
 | **Sliding Window Trimming** | ~16,410 ops/ms | > 16.4 Million |
+| **Semantic Memory Recall**  | ~921 ops/ms    | > 921,000 ops/sec |
 | **Gemini Prompt Formatting** | ~657 ops/ms   | > 657,000 ops/sec |
 | **ChatML Prompt Formatting** | ~470 ops/ms   | > 470,000 ops/sec |
 
-*Measured on Windows 11, Intel Core i5-1135G7 (Surface Pro 8), JDK 21.0.12. Measures full message chain transformations and sliding array operations.*
+*Measured on Windows 11, Intel Core i5-1135G7 (Surface Pro 8), JDK 21.0.12. Measures full message chain transformations, in-memory semantic token matching, and sliding array operations without external allocations.*
 
 ### Framework Comparison
 
