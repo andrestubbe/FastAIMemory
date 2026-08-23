@@ -105,6 +105,29 @@ Utility for trimming historical context prior to sending requests:
 
 ---
 
+## Performance Benchmarks
+
+FastAIMemory is profiled using **JMH** to guarantee zero-overhead memory pruning and formatting:
+
+| Metric / Hot-Path Operation | Score (ops/ms) | Ops per Second |
+|-----------------------------|----------------|----------------|
+| **Sliding Window Trimming** | ~16,410 ops/ms | > 16.4 Million |
+| **Gemini Prompt Formatting** | ~657 ops/ms   | > 657,000 ops/sec |
+| **ChatML Prompt Formatting** | ~470 ops/ms   | > 470,000 ops/sec |
+
+*Measured on Windows 11, Intel Core i5-1135G7 (Surface Pro 8), JDK 21.0.12. Measures full message chain transformations and sliding array operations.*
+
+---
+
+## Technical Examples & Demos
+
+| Case | Java Example | Launcher | Description |
+|---|---|---|---|
+| **Memory Orchestration Demo** | [Demo.java](src/test/java/fastaimemory/Demo.java) | `mvn test` | Complete example demonstrating ChatML formatting, rolling summary compaction, and semantic memory. |
+| **JMH Microbenchmarks** | [FastAIMemoryBenchmark.java](examples/Benchmark/src/main/java/fastaimemory/FastAIMemoryBenchmark.java) | `run-benchmark.bat` | JMH throughput benchmark for ChatML/Gemini prompt formatting and memory trimming. |
+
+---
+
 ## Related Projects
 
 - [FastAI](https://github.com/andrestubbe/FastAI) - Unified AI client interface for Java
