@@ -141,12 +141,42 @@ summaryMem.user("How do I eliminate allocations?");
 
 ### Semantic Memory Recall
 
-`java
+```java
 // Stores and recalls relevant context
 SemanticMemory semanticMem = new SemanticMemory(3, null);
 semanticMem.remember("arch_goal", "Target 60+ FPS zero GC in timeline orchestration.");
-var results = semanticMem.recall("FPS timeline");
-`
+List<SemanticMemory.MemoryEntry> results = semanticMem.recall("FPS timeline");
+```
+
+### Real-World Production Patterns
+
+#### 1. Long-Running Coding Agent with Sliding Context & System Retention
+```java
+ConversationHistory history = new ConversationHistory();
+history.system("You are an autonomous refactoring agent.");
+
+// After dozens of tool calls and iterations, keep prompt under token limits without losing instructions
+List<ConversationMessage> activeContext = MemoryWindow.trimToEstimatedTokens(history.messages(), 4096);
+```
+
+#### 2. Infinite Support Chatbot with Rolling Background Summarization
+```java
+// Automatically condenses older turns when dialog grows beyond 8 messages
+SummaryMemory memory = new SummaryMemory(6, rawDialogue -> {
+    return ai.ask("Summarize the customer's core problem in 1 concise paragraph:\n" + rawDialogue);
+});
+memory.user("My payment failed on checkout step 2.");
+```
+
+#### 3. Agent Personality & Knowledge Base Retrieval (Semantic Recall)
+```java
+SemanticMemory userProfile = new SemanticMemory(2, null);
+userProfile.remember("pref_lang", "User prefers pure Java solutions over Python scripts.");
+userProfile.remember("pref_os", "User runs on Windows 11 with AVX2 support.");
+
+// Dynamic prompt injection on user query
+var relevantMemories = userProfile.recall("Write a benchmark runner");
+```
 
 ---
 
