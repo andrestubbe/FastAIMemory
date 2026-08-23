@@ -12,13 +12,13 @@ public final class ChatMLFormatter implements MemoryFormatter {
         StringBuilder sb = new StringBuilder();
         for (ConversationMessage m : messages) {
             String role = switch (m.role()) {
-                case SYSTEM    -> "system";
-                case USER      -> "user";
+                case SYSTEM -> "system";
+                case USER -> "user";
                 case ASSISTANT -> "assistant";
             };
             sb.append("<|im_start|>").append(role).append("\n")
-              .append(m.text())
-              .append("<|im_end|>\n");
+                    .append(m.text())
+                    .append("<|im_end|>\n");
         }
         sb.append("<|im_start|>assistant\n");
         return sb.toString();

@@ -27,10 +27,6 @@ public final class SummaryMemory {
         this.currentSummary = null;
     }
 
-    public void setSummarizer(final Function<String, String> summarizerFunction) {
-        this.summarizerFunction = summarizerFunction;
-    }
-
     public synchronized void user(final String text) {
         this.history.user(text);
         this.compactIfNeeded();
@@ -116,5 +112,9 @@ public final class SummaryMemory {
                 // Keep history intact if summarization fails
             }
         }
+    }
+
+    public void setSummarizer(final Function<String, String> summarizerFunction) {
+        this.summarizerFunction = summarizerFunction;
     }
 }
