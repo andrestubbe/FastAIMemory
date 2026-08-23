@@ -1,5 +1,22 @@
 @echo off
+chcp 65001 >nul
 cd /d "%~dp0"
-echo Starting FastAIMemory German Corrector Demo...
-mvn test-compile exec:java "-Dexec.mainClass=fastaimemory.Demo" "-Dexec.classpathScope=test"
+
+echo ===============================================================
+echo   Building and launching FastAIMemory Architecture Demo...
+echo ===============================================================
+
+REM Try direct mvn or user specific tools path
+where mvn >nul 2>nul
+if %errorlevel% equ 0 (
+    set MVN_CMD=mvn
+) else if exist "C:\Users\andre\tools\apache-maven-3.9.9\bin\mvn.cmd" (
+    set "MVN_CMD=C:\Users\andre\tools\apache-maven-3.9.9\bin\mvn.cmd"
+) else (
+    echo [ERROR] Maven not found. Please install Maven or add it to PATH.
+    pause
+    exit /b 1
+)
+
+call %MVN_CMD% test-compile exec:java "-Dexec.mainClass=fastaimemory.Demo" "-Dexec.classpathScope=test"
 pause
