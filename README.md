@@ -233,11 +233,11 @@ var relevantMemories = userProfile.recall("Write a benchmark runner");
 
 ---
 
-## Technical Examples & Demos
+## Technical Examples & Hero Demos
 
 | Case | Java Example | Launcher | Description |
 |---|---|---|---|
-| **Memory Orchestration Demo** | [Demo.java](src/test/java/fastaimemory/Demo.java) | `run-demo.bat` | Interactive CLI demo showcasing Sliding Window, Rolling Summaries, and Semantic Memory. |
+| **Memory Orchestration Demo** | [Demo.java](examples/Demo/src/main/java/fastaimemory/Demo.java) | `run-demo.bat` | Interactive CLI demo showcasing Sliding Window, Rolling Summaries, and Semantic Memory. |
 | **JMH Microbenchmarks** | [FastAIMemoryBenchmark.java](examples/Benchmark/src/main/java/fastaimemory/FastAIMemoryBenchmark.java) | `run-benchmark.bat` | JMH throughput benchmark for ChatML/Gemini prompt formatting and memory trimming. |
 
 ---
