@@ -2,7 +2,7 @@
 
 [![Status](https://img.shields.io/badge/status-0.1.4-brightgreen.svg)](https://github.com/andrestubbe/FastAIMemory/releases/tag/0.1.4)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Java](https://img.shields.io/badge/Java-17+-blue.svg)](https://www.java.com)
+[![Java](https://img.shields.io/badge/Java-17+-blue.svg)](https://www.`java.com)
 [![Platform](https://img.shields.io/badge/Platform-Windows%2010+-lightgrey.svg)]()
 [![JitPack](https://img.shields.io/badge/JitPack-ready-green.svg)](https://jitpack.io/#andrestubbe/FastAIMemory)
 
@@ -21,12 +21,12 @@ FastAIMemory is a **primitive context manager** for Java. It unifies all 3 core 
 
 ## Quick Start
 
-`java
+``java
 import fastaimemory.ConversationHistory;
 import fastaimemory.MemoryWindow;
 import fastaimemory.SummaryMemory;
 import fastaimemory.SemanticMemory;
-import java.util.List;
+import `java.util.List;
 
 public class Example {
     public static void main(String[] args) {
@@ -43,11 +43,11 @@ public class Example {
 
         // 3. Semantic Memory (Recalls relevant snippets)
         SemanticMemory semanticMem = new SemanticMemory(3, null);
-        semanticMem.remember("pref_java", "User prefers Java 17+ and zero-dependency libraries.");
+        semanticMem.remember("pref_`java", "User prefers Java 17+ and zero-dependency libraries.");
         List<SemanticMemory.MemoryEntry> recalled = semanticMem.recall("Show me Java code");
     }
 }
-`
+```
 
 ---
 
@@ -132,9 +132,9 @@ FastAIMemory is **zero-dependency** and **zero-allocation** for core orchestrati
 
 ## Installation
 
-Add the JitPack repository and the dependency to your pom.xml:
+Add the JitPack repository and the dependency to your pom.`xml:
 
-`xml
+``xml
 <repositories>
     <repository>
         <id>jitpack.io</id>
@@ -150,7 +150,7 @@ Add the JitPack repository and the dependency to your pom.xml:
     <version>0.1.4</version>
 </dependency>
 </dependencies>
-`
+```
 
 ---
 
@@ -168,7 +168,7 @@ Add the JitPack repository and the dependency to your pom.xml:
 
 ### History & Windows
 
-`java
+``java
 // Thread-safe Conversation History
 ConversationHistory history = new ConversationHistory();
 history.system("You are a Java engineer.");
@@ -177,56 +177,56 @@ history.assistant("Java uses JMM...");
 
 // Sliding Window Trimming
 List<ConversationMessage> trimmed = MemoryWindow.trimToMessages(history.messages(), 10);
-`
+```
 
 ### Rolling Summary Memory
 
-`java
+``java
 // Compacts history when turns exceed threshold
 SummaryMemory summaryMem = new SummaryMemory(6, rawDialogue -> {
     return "User is discussing concurrency and zero-allocation pipelines.";
 });
 summaryMem.user("How do I eliminate allocations?");
-`
+```
 
 ### Semantic Memory Recall
 
-`java
+``java
 // Stores and recalls relevant context
 SemanticMemory semanticMem = new SemanticMemory(3, null);
 semanticMem.remember("arch_goal", "Target 60+ FPS zero GC in timeline orchestration.");
 List<SemanticMemory.MemoryEntry> results = semanticMem.recall("FPS timeline");
-`
+```
 
 ### Real-World Production Patterns
 
 #### 1. Long-Running Coding Agent with Sliding Context & System Retention
-`java
+``java
 ConversationHistory history = new ConversationHistory();
 history.system("You are an autonomous refactoring agent.");
 
 // After dozens of tool calls and iterations, keep prompt under token limits without losing instructions
 List<ConversationMessage> activeContext = MemoryWindow.trimToEstimatedTokens(history.messages(), 4096);
-`
+```
 
 #### 2. Infinite Support Chatbot with Rolling Background Summarization
-`java
+``java
 // Automatically condenses older turns when dialog grows beyond 8 messages
 SummaryMemory memory = new SummaryMemory(6, rawDialogue -> {
     return ai.ask("Summarize the customer's core problem in 1 concise paragraph:\n" + rawDialogue);
 });
 memory.user("My payment failed on checkout step 2.");
-`
+```
 
 #### 3. Agent Personality & Knowledge Base Retrieval (Semantic Recall)
-`java
+``java
 SemanticMemory userProfile = new SemanticMemory(2, null);
 userProfile.remember("pref_lang", "User prefers pure Java solutions over Python scripts.");
 userProfile.remember("pref_os", "User runs on Windows 11 with AVX2 support.");
 
 // Dynamic prompt injection on user query
 var relevantMemories = userProfile.recall("Write a benchmark runner");
-`
+```
 
 ---
 
@@ -234,8 +234,8 @@ var relevantMemories = userProfile.recall("Write a benchmark runner");
 
 | Case | Java Example | Launcher | Description |
 |---|---|---|---|
-| **Memory Orchestration Demo** | [Demo.java](src/test/java/fastaimemory/Demo.java) | un-demo.bat | Interactive CLI demo showcasing Sliding Window, Rolling Summaries, and Semantic Memory. |
-| **JMH Microbenchmarks** | [FastAIMemoryBenchmark.java](examples/Benchmark/src/main/java/fastaimemory/FastAIMemoryBenchmark.java) | un-benchmark.bat | JMH throughput benchmark for ChatML/Gemini prompt formatting and memory trimming. |
+| **Memory Orchestration Demo** | [Demo.`java](src/test/`java/fastaimemory/Demo.`java) | un-demo.bat | Interactive CLI demo showcasing Sliding Window, Rolling Summaries, and Semantic Memory. |
+| **JMH Microbenchmarks** | [FastAIMemoryBenchmark.`java](examples/Benchmark/src/main/`java/fastaimemory/FastAIMemoryBenchmark.`java) | un-benchmark.bat | JMH throughput benchmark for ChatML/Gemini prompt formatting and memory trimming. |
 
 ---
 
