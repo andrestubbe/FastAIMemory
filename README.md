@@ -271,20 +271,24 @@ MIT License â€” See [LICENSE](LICENSE) file for details.
 
 ## Related Projects
 
-- [FastAI](https://github.com/andrestubbe/FastAI) â€” Unified AI client interface for Java
-- [FastAIAgent](https://github.com/andrestubbe/FastAIAgent) â€” Autonomous agent loop, intent-graphs, and tool execution
-- [FastAIBot](https://github.com/andrestubbe/FastAIBot) â€” Zero-bloat bot harnesses and persona runtime
-- [FastAIGraph](https://github.com/andrestubbe/FastAIGraph) â€” In-memory knowledge graph and multi-hop relationship engine
-- [FastAIHybrid](https://github.com/andrestubbe/FastAIHybrid) â€” Dense-sparse hybrid search fusion (BM25 + Vectors)
-- [FastAIMCP](https://github.com/andrestubbe/FastAIMCP) â€” Model Context Protocol (MCP) server & tool integration
-- [FastAIMemory](https://github.com/andrestubbe/FastAIMemory) â€” Conversation history, sliding windows, and rolling summaries
-- [FastAIModel](https://github.com/andrestubbe/FastAIModel) â€” Native local inference runtime (GGUF/ONNX)
-- [FastAIRag](https://github.com/andrestubbe/FastAIRag) â€” Ultra-fast document chunking and vector retrieval
-- [FastAIReasoner](https://github.com/andrestubbe/FastAIReasoner) â€” Deterministic planning, chain-of-thought, and self-correction
-- [FastAIRerank](https://github.com/andrestubbe/FastAIRerank) â€” Cross-encoder relevance filtering and Top-N prompt pruner
-- [FastAIRuntime](https://github.com/andrestubbe/FastAIRuntime) â€” Sandboxed process runner and tool-calling execution pipeline
-- [FastAIVectorDB](https://github.com/andrestubbe/FastAIVectorDB) â€” High-throughput SIMD/AVX2 vector database
-- [FastCore](https://github.com/andrestubbe/FastCore) â€” Unified JNI loader and platform abstraction
+- [FastAI](https://github.com/andrestubbe/FastAI) — Unified AI client interface for Java
+- [FastAIAgent](https://github.com/andrestubbe/FastAIAgent) — Autonomous agent loop, intent-graphs, and tool execution
+- [FastAIBot](https://github.com/andrestubbe/FastAIBot) — Zero-bloat bot harnesses and persona runtime
+- [FastAIGraph](https://github.com/andrestubbe/FastAIGraph) — In-memory knowledge graph and multi-hop relationship engine
+- [FastAIHybrid](https://github.com/andrestubbe/FastAIHybrid) — Dense-sparse hybrid search fusion (BM25 + Vectors)
+- [FastAIMatcher](https://github.com/andrestubbe/FastAIMatcher) — Automated SOX compliance and hybrid rule matching engine
+- [FastAIMCP](https://github.com/andrestubbe/FastAIMCP) — Model Context Protocol (MCP) server & tool integration
+- [FastAIMemory](https://github.com/andrestubbe/FastAIMemory) — Conversation history, sliding windows, and rolling summaries
+- [FastAIMetrics](https://github.com/andrestubbe/FastAIMetrics) — Ultra-fast lock-free token, latency, cost tracking and evaluation engine
+- [FastAIModel](https://github.com/andrestubbe/FastAIModel) — Native local inference runtime (GGUF/ONNX)
+- [FastAIRag](https://github.com/andrestubbe/FastAIRag) — Ultra-fast document chunking and vector retrieval
+- [FastAIReasoner](https://github.com/andrestubbe/FastAIReasoner) — Deterministic planning, chain-of-thought, and self-correction
+- [FastAIRerank](https://github.com/andrestubbe/FastAIRerank) — Cross-encoder relevance filtering and Top-N prompt pruner
+- [FastAIRuntime](https://github.com/andrestubbe/FastAIRuntime) — Sandboxed process runner and tool-calling execution pipeline
+- [FastAIState](https://github.com/andrestubbe/FastAIState) — Lock-free shared agent state & blackboard memory
+- [FastAIVectorDB](https://github.com/andrestubbe/FastAIVectorDB) — High-throughput SIMD/AVX2 vector database
+- [FastAIVision](https://github.com/andrestubbe/FastAIVision) — High-speed local multimodal vision, UI-element grounding, and screen-VLM engine
+- [FastCore](https://github.com/andrestubbe/FastCore) — Unified JNI loader and platform abstraction
 
 ---
 
