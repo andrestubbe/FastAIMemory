@@ -1,4 +1,4 @@
-# FastAIMemory 0.1.4 — Unified Conversation History and Memory Orchestration for Java
+﻿# FastAIMemory 0.1.4 â€” Unified Conversation History and Memory Orchestration for Java
 
 [![Status](https://img.shields.io/badge/status-0.1.4-brightgreen.svg)](https://github.com/andrestubbe/FastAIMemory/releases/tag/0.1.4)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -8,12 +8,12 @@
 
 ---
 
-**💡 Extremely lightweight, provider-independent, thread-safe conversation history, formatters, and memory-trimming utilities for the FastJava AI Ecosystem.**
+**ðŸ’¡ Extremely lightweight, provider-independent, thread-safe conversation history, formatters, and memory-trimming utilities for the FastJava AI Ecosystem.**
 
 FastAIMemory is a **primitive context manager** for Java. It unifies all 3 core AI memory pattern families behind a clean, zero-bloat interface:
-1. **Window Memory** (`MemoryWindow`) — Sliding message, character, and token windows.
-2. **Summary Memory** (`SummaryMemory`) — Rolling background condensation of aging chat turns.
-3. **Semantic Memory** (`SemanticMemory`) — Dynamic context recall based on similarity or keywords.
+1. **Window Memory** (`MemoryWindow`) â€” Sliding message, character, and token windows.
+2. **Summary Memory** (`SummaryMemory`) â€” Rolling background condensation of aging chat turns.
+3. **Semantic Memory** (`SemanticMemory`) â€” Dynamic context recall based on similarity or keywords.
 
 [![FastAIMemory Showcase](docs/screenshot.png)](docs/screenshot.png)
 
@@ -74,21 +74,21 @@ Current memory solutions in Java are deeply tied to bloated frameworks and heavy
 
 FastAIMemory solves this by providing:
 
-- **3 Core Memory Patterns** — Full support for Window Memory, Rolling Summary Memory, and Semantic Recall.
-- **Provider Agnostic** — Decoupled from specific provider APIs. Works seamlessly with OpenAI, Gemini, Claude, Ollama, and local runtimes.
-- **Thread Safe** — Thread-safe `ConversationHistory` using lock synchronization makes it reliable for concurrent multi-agent environments.
-- **Polymorphic Formatters** — Implement `MemoryFormatter` to structure output prompts dynamically using plain text, ChatML, or specialized provider tokens.
-- **Zero Dependencies** — Pure Java 17+, no Jackson, no Spring, no heavy third-party drivers.
+- **3 Core Memory Patterns** â€” Full support for Window Memory, Rolling Summary Memory, and Semantic Recall.
+- **Provider Agnostic** â€” Decoupled from specific provider APIs. Works seamlessly with OpenAI, Gemini, Claude, Ollama, and local runtimes.
+- **Thread Safe** â€” Thread-safe `ConversationHistory` using lock synchronization makes it reliable for concurrent multi-agent environments.
+- **Polymorphic Formatters** â€” Implement `MemoryFormatter` to structure output prompts dynamically using plain text, ChatML, or specialized provider tokens.
+- **Zero Dependencies** â€” Pure Java 17+, no Jackson, no Spring, no heavy third-party drivers.
 
 ---
 
 ## Key Features
 
-- **🪟 Sliding Window Pruning** — Instant deterministic context trimming by message counts, character limits, or heuristic token estimates.
-- **🧠 Rolling Summary Memory** — Automatic condensation of older conversation turns while keeping recent context and system prompts active.
-- **🔍 Semantic Memory Recall** — Fast retrieval of user preferences and relevant knowledge snippets into active prompts.
-- **🎭 Unified Formatters** — Built-in polymorphic formatters for ChatML (`<|im_start|>`), Claude, Gemini, and plain text.
-- **⚡ Ultra-Lightweight** — Zero allocations on hot-paths with sub-microsecond formatting throughput (> 16.4 Million ops/sec).
+- **ðŸªŸ Sliding Window Pruning** â€” Instant deterministic context trimming by message counts, character limits, or heuristic token estimates.
+- **ðŸ§  Rolling Summary Memory** â€” Automatic condensation of older conversation turns while keeping recent context and system prompts active.
+- **ðŸ” Semantic Memory Recall** â€” Fast retrieval of user preferences and relevant knowledge snippets into active prompts.
+- **ðŸŽ­ Unified Formatters** â€” Built-in polymorphic formatters for ChatML (`<|im_start|>`), Claude, Gemini, and plain text.
+- **âš¡ Ultra-Lightweight** â€” Zero allocations on hot-paths with sub-microsecond formatting throughput (> 16.4 Million ops/sec).
 
 ---
 
@@ -240,41 +240,52 @@ var relevantMemories = userProfile.recall("Write a benchmark runner");
 | **Memory Orchestration Demo** | [Demo.java](examples/Demo/src/main/java/fastaimemory/Demo.java) | `run-demo.bat` | Interactive CLI demo showcasing Sliding Window, Rolling Summaries, and Semantic Memory. |
 | **JMH Microbenchmarks** | [FastAIMemoryBenchmark.java](examples/Benchmark/src/main/java/fastaimemory/FastAIMemoryBenchmark.java) | `run-benchmark.bat` | JMH throughput benchmark for ChatML/Gemini prompt formatting and memory trimming. |
 
+
+---
+
+## Documentation
+
+* **[REFERENCE.md](docs/REFERENCE.md)**: Core API reference manual.
+* **[PHILOSOPHY.md](docs/PHILOSOPHY.md)**: Conversation history condensation and memory patterns.
+* **[COMPILE.md](docs/COMPILE.md)**: Build instructions.
+* **[CHANGELOG.md](docs/CHANGELOG.md)**: Project history and releases.
+* **[ROADMAP.md](docs/ROADMAP.md)**: Future milestones.
+
 ---
 
 ## Platform Support
 
 | Platform      | Status            |
 |---------------|-------------------|
-| Windows 10/11 | ✅ Fully Supported |
-| Linux         | 🚧 Planned        |
-| macOS         | 🚧 Planned        |
+| Windows 10/11 | âœ… Fully Supported |
+| Linux         | ðŸš§ Planned        |
+| macOS         | ðŸš§ Planned        |
 
 ---
 
 ## License
 
-MIT License — See [LICENSE](LICENSE) file for details.
+MIT License â€” See [LICENSE](LICENSE) file for details.
 
 ---
 
 ## Related Projects
 
-- [FastAI](https://github.com/andrestubbe/FastAI) — Unified AI client interface for Java
-- [FastAIAgent](https://github.com/andrestubbe/FastAIAgent) — Autonomous agent loop, intent-graphs, and tool execution
-- [FastAIBot](https://github.com/andrestubbe/FastAIBot) — Zero-bloat bot harnesses and persona runtime
-- [FastAIGraph](https://github.com/andrestubbe/FastAIGraph) — In-memory knowledge graph and multi-hop relationship engine
-- [FastAIHybrid](https://github.com/andrestubbe/FastAIHybrid) — Dense-sparse hybrid search fusion (BM25 + Vectors)
-- [FastAIMCP](https://github.com/andrestubbe/FastAIMCP) — Model Context Protocol (MCP) server & tool integration
-- [FastAIMemory](https://github.com/andrestubbe/FastAIMemory) — Conversation history, sliding windows, and rolling summaries
-- [FastAIModel](https://github.com/andrestubbe/FastAIModel) — Native local inference runtime (GGUF/ONNX)
-- [FastAIRag](https://github.com/andrestubbe/FastAIRag) — Ultra-fast document chunking and vector retrieval
-- [FastAIReasoner](https://github.com/andrestubbe/FastAIReasoner) — Deterministic planning, chain-of-thought, and self-correction
-- [FastAIRerank](https://github.com/andrestubbe/FastAIRerank) — Cross-encoder relevance filtering and Top-N prompt pruner
-- [FastAIRuntime](https://github.com/andrestubbe/FastAIRuntime) — Sandboxed process runner and tool-calling execution pipeline
-- [FastAIVectorDB](https://github.com/andrestubbe/FastAIVectorDB) — High-throughput SIMD/AVX2 vector database
-- [FastCore](https://github.com/andrestubbe/FastCore) — Unified JNI loader and platform abstraction
+- [FastAI](https://github.com/andrestubbe/FastAI) â€” Unified AI client interface for Java
+- [FastAIAgent](https://github.com/andrestubbe/FastAIAgent) â€” Autonomous agent loop, intent-graphs, and tool execution
+- [FastAIBot](https://github.com/andrestubbe/FastAIBot) â€” Zero-bloat bot harnesses and persona runtime
+- [FastAIGraph](https://github.com/andrestubbe/FastAIGraph) â€” In-memory knowledge graph and multi-hop relationship engine
+- [FastAIHybrid](https://github.com/andrestubbe/FastAIHybrid) â€” Dense-sparse hybrid search fusion (BM25 + Vectors)
+- [FastAIMCP](https://github.com/andrestubbe/FastAIMCP) â€” Model Context Protocol (MCP) server & tool integration
+- [FastAIMemory](https://github.com/andrestubbe/FastAIMemory) â€” Conversation history, sliding windows, and rolling summaries
+- [FastAIModel](https://github.com/andrestubbe/FastAIModel) â€” Native local inference runtime (GGUF/ONNX)
+- [FastAIRag](https://github.com/andrestubbe/FastAIRag) â€” Ultra-fast document chunking and vector retrieval
+- [FastAIReasoner](https://github.com/andrestubbe/FastAIReasoner) â€” Deterministic planning, chain-of-thought, and self-correction
+- [FastAIRerank](https://github.com/andrestubbe/FastAIRerank) â€” Cross-encoder relevance filtering and Top-N prompt pruner
+- [FastAIRuntime](https://github.com/andrestubbe/FastAIRuntime) â€” Sandboxed process runner and tool-calling execution pipeline
+- [FastAIVectorDB](https://github.com/andrestubbe/FastAIVectorDB) â€” High-throughput SIMD/AVX2 vector database
+- [FastCore](https://github.com/andrestubbe/FastCore) â€” Unified JNI loader and platform abstraction
 
 ---
 
-**Part of the FastJava Ecosystem** — *Making the JVM faster. Small package. Maximum speed. Zero bloat. 🚀📋*
+**Part of the FastJava Ecosystem** â€” *Making the JVM faster. Small package. Maximum speed. Zero bloat. ðŸš€ðŸ“‹*
