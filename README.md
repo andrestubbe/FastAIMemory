@@ -15,6 +15,8 @@ FastAIMemory is a **primitive context manager** for Java. It unifies all 3 core 
 2. **Summary Memory** (`SummaryMemory`) â€” Rolling background condensation of aging chat turns.
 3. **Semantic Memory** (`SemanticMemory`) â€” Dynamic context recall based on similarity or keywords.
 
+[Watch Demo (YouTube)] | [Watch JMH Benchmark (Youtube)]
+
 [![FastAIMemory Showcase](docs/screenshot.png)](docs/screenshot.png)
 
 ---
