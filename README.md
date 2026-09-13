@@ -1,4 +1,4 @@
-﻿# FastAIMemory 0.1.4 â€” Unified Conversation History and Memory Orchestration for Java
+# FastAIMemory 0.1.4 — Unified Conversation History and Memory Orchestration for Java
 
 [![Status](https://img.shields.io/badge/status-0.1.4-brightgreen.svg)](https://github.com/andrestubbe/FastAIMemory/releases/tag/0.1.4)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -8,12 +8,12 @@
 
 ---
 
-**ðŸ’¡ Extremely lightweight, provider-independent, thread-safe conversation history, formatters, and memory-trimming utilities for the FastJava AI Ecosystem.**
+**💡 Extremely lightweight, provider-independent, thread-safe conversation history, formatters, and memory-trimming utilities for the FastJava AI Ecosystem.**
 
 FastAIMemory is a **primitive context manager** for Java. It unifies all 3 core AI memory pattern families behind a clean, zero-bloat interface:
-1. **Window Memory** (`MemoryWindow`) â€” Sliding message, character, and token windows.
-2. **Summary Memory** (`SummaryMemory`) â€” Rolling background condensation of aging chat turns.
-3. **Semantic Memory** (`SemanticMemory`) â€” Dynamic context recall based on similarity or keywords.
+1. **Window Memory** (`MemoryWindow`) — Sliding message, character, and token windows.
+2. **Summary Memory** (`SummaryMemory`) — Rolling background condensation of aging chat turns.
+3. **Semantic Memory** (`SemanticMemory`) — Dynamic context recall based on similarity or keywords.
 
 [Watch Demo (YouTube)] | [Watch JMH Benchmark (Youtube)]
 
@@ -76,21 +76,21 @@ Current memory solutions in Java are deeply tied to bloated frameworks and heavy
 
 FastAIMemory solves this by providing:
 
-- **3 Core Memory Patterns** â€” Full support for Window Memory, Rolling Summary Memory, and Semantic Recall.
-- **Provider Agnostic** â€” Decoupled from specific provider APIs. Works seamlessly with OpenAI, Gemini, Claude, Ollama, and local runtimes.
-- **Thread Safe** â€” Thread-safe `ConversationHistory` using lock synchronization makes it reliable for concurrent multi-agent environments.
-- **Polymorphic Formatters** â€” Implement `MemoryFormatter` to structure output prompts dynamically using plain text, ChatML, or specialized provider tokens.
-- **Zero Dependencies** â€” Pure Java 17+, no Jackson, no Spring, no heavy third-party drivers.
+- **3 Core Memory Patterns** — Full support for Window Memory, Rolling Summary Memory, and Semantic Recall.
+- **Provider Agnostic** — Decoupled from specific provider APIs. Works seamlessly with OpenAI, Gemini, Claude, Ollama, and local runtimes.
+- **Thread Safe** — Thread-safe `ConversationHistory` using lock synchronization makes it reliable for concurrent multi-agent environments.
+- **Polymorphic Formatters** — Implement `MemoryFormatter` to structure output prompts dynamically using plain text, ChatML, or specialized provider tokens.
+- **Zero Dependencies** — Pure Java 17+, no Jackson, no Spring, no heavy third-party drivers.
 
 ---
 
 ## Key Features
 
-- **ðŸªŸ Sliding Window Pruning** â€” Instant deterministic context trimming by message counts, character limits, or heuristic token estimates.
-- **ðŸ§  Rolling Summary Memory** â€” Automatic condensation of older conversation turns while keeping recent context and system prompts active.
-- **ðŸ” Semantic Memory Recall** â€” Fast retrieval of user preferences and relevant knowledge snippets into active prompts.
-- **ðŸŽ­ Unified Formatters** â€” Built-in polymorphic formatters for ChatML (`<|im_start|>`), Claude, Gemini, and plain text.
-- **âš¡ Ultra-Lightweight** â€” Zero allocations on hot-paths with sub-microsecond formatting throughput (> 16.4 Million ops/sec).
+- **🪟 Sliding Window Pruning** — Instant deterministic context trimming by message counts, character limits, or heuristic token estimates.
+- **🧠 Rolling Summary Memory** — Automatic condensation of older conversation turns while keeping recent context and system prompts active.
+- **🔍 Semantic Memory Recall** — Fast retrieval of user preferences and relevant knowledge snippets into active prompts.
+- **🎭 Unified Formatters** — Built-in polymorphic formatters for ChatML (`<|im_start|>`), Claude, Gemini, and plain text.
+- **⚡ Ultra-Lightweight** — Zero allocations on hot-paths with sub-microsecond formatting throughput (> 16.4 Million ops/sec).
 
 ---
 
@@ -259,15 +259,15 @@ var relevantMemories = userProfile.recall("Write a benchmark runner");
 
 | Platform      | Status            |
 |---------------|-------------------|
-| Windows 10/11 | âœ… Fully Supported |
-| Linux         | ðŸš§ Planned        |
-| macOS         | ðŸš§ Planned        |
+| Windows 10/11 | ✅ Fully Supported |
+| Linux         | 🚧 Planned        |
+| macOS         | 🚧 Planned        |
 
 ---
 
 ## License
 
-MIT License â€” See [LICENSE](LICENSE) file for details.
+MIT License — See [LICENSE](LICENSE) file for details.
 
 ---
 
@@ -294,4 +294,4 @@ MIT License â€” See [LICENSE](LICENSE) file for details.
 
 ---
 
-**Part of the FastJava Ecosystem** â€” *Making the JVM faster. Small package. Maximum speed. Zero bloat. ðŸš€ðŸ“‹*
+**Part of the FastJava Ecosystem** — *Making the JVM faster. Small package. Maximum speed. Zero bloat. 🚀📋*
