@@ -2,21 +2,17 @@
 chcp 65001 >nul
 cd /d "%~dp0"
 
-echo ===============================================================
-echo   Building and launching FastAIMemory Architecture Demo...
-echo ===============================================================
+echo [1/3] Building FastAIMemory library...
+call mvn clean install -DskipTests -q
+if %errorlevel% neq 0 ( echo [ERROR] FastAIMemory build failed! & pause & exit /b 1 )
 
-REM Try direct mvn or user specific tools path
-where mvn >nul 2>nul
-if %errorlevel% equ 0 (
-    set MVN_CMD=mvn
-) else if exist "C:\Users\andre\tools\apache-maven-3.9.9\bin\mvn.cmd" (
-    set "MVN_CMD=C:\Users\andre\tools\apache-maven-3.9.9\bin\mvn.cmd"
-) else (
-    echo [ERROR] Maven not found. Please install Maven or add it to PATH.
-    pause
-    exit /b 1
-)
+echo [2/3] Compiling Demo...
+cd examples\Demo
+call mvn compile -q
+if %errorlevel% neq 0 ( echo [ERROR] Demo compile failed! & pause & exit /b 1 )
 
-call %MVN_CMD% test-compile exec:java "-Dexec.mainClass=fastaimemory.Demo" "-Dexec.classpathScope=test"
+echo [3/3] Running Demo...
+call mvn exec:java -Dexec.mainClass=fastaimemory.Demo -q %*
+
+cd ..\..
 pause
